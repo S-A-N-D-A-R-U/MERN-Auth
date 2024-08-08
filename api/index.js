@@ -3,12 +3,15 @@ import express from "express";
 import mongoose from "mongoose";
 import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
+import cors from 'cors'
 
 dotenv.config();
 
 const app = express();
-
+app.use(cors());
 app.use(express.json());
+// app.use(cors)
+
 
 mongoose.connect(process.env.MONGO).then(()=>{
        console.log("Connected to MongoDB") ;
