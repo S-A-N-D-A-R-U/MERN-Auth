@@ -88,14 +88,14 @@
 
 // export default SignUp;
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function SignUp() {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
@@ -114,6 +114,7 @@ function SignUp() {
       setLoading(false);
       // The response data is automatically parsed as JSON by Axios
       console.log(res.data);
+      navigate('/sign-in');
     } catch (error) {
       setLoading(true);
       setError(true);
